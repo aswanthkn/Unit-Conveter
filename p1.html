@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <style>
+        body {
+            background-image: url('https://thumbs.dreamstime.com/b/abstract-light-background-17005046.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .center {
+            text-align: center;
+        }
+        .container {
+            border: 1px solid #15011b;
+            padding: 20px;
+            margin: 10px;
+            width: 400px;
+            height: 300px;
+            float: left;
+            background-color: rgb(227, 217, 171);
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-20px);
+            box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.4);
+        }
+        .thilight {
+            background-color: #f16316;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .mhilight {
+            background-color: #6e9ce1;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .lhilight {
+            background-color: rgb(135, 228, 173);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .chiligh {
+            background-color: #d4a017;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .bhilight {
+            background-color: #b8860b;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .td {
+            border: 1px solid #e3b6b6;
+            padding: 10px;
+            margin: 10px;
+            width: 40px;
+            height: 30px;
+            float: left;
+        }
+        .header {
+            margin: 20px;
+            width: 40px;
+            height: 30px;
+            float: left;
+        }
+        .timage {
+            background-image: url('https://images.unsplash.com/photo-1557682260-96773eb01377?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8b3JhbmdlJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
+        }
+        .mimage {
+            background-image: url('https://img.freepik.com/free-vector/gradient-blue-abstract-technology-background_23-2149213765.jpg');
+            background-size: fixed;
+            background-position: center;
+            height: 290px;
+        }
+        .limage {
+            background-image: url("https://img.freepik.com/free-vector/geometric-green-abstract-background_23-2148380473.jpg");
+            background-size: fixed;
+            background-position: center;
+            height: 290px;
+        }
+        .cimage {
+            background-image: url("https://as2.ftcdn.net/v2/jpg/01/33/77/59/1000_F_133775940_0K9KVheY7WvuOSfI6BAEKAnOStTpCip2.jpg");
+            background-size: fixed;
+            background-position: center;
+            height: 290px;
+        }
+        .bimage {
+            background-image: url("https://www.shutterstock.com/image-vector/blue-dotted-perspective-background-ideal-260nw-156577034.jpg");
+            background-size: fixed;
+            background-position: center;
+            height: 290px;
+        }
+        .timeimage {
+            background-image: url("https://t3.ftcdn.net/jpg/01/81/33/44/240_F_181334456_izy7WhJzEvkJzZrQWyBHmOCchKViuAGS.jpg");
+            background-size: fixed;
+            background-position: center;
+            height: 290px;
+        }
+        button {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="center" style="color: #e0cd8d;">Unit Converter</h1>
+    <div class="container" onclick="redirectTo('p1temperature.html')">
+        <div class="timage">
+            <div class="thilight">
+                <h2 class="center">Temperature Quantity</h2>
+            </div>
+            <br>
+            <div id="td">
+                <p class="center">Temperature</p>
+            </div>
+            <p class="center">Fahrenheit</p>
+            <p class="center">Kelvin</p><br><br>
+            <button onclick="event.stopPropagation(); redirectTo('p1temperature.html')">Click here to work</button>
+        </div>
+    </div>
+
+    <div class="container" onclick="redirectTo('p1Mass.html')">
+        <div class="mimage">
+            <div class="mhilight">
+                <h2 class="center">Mass Quantity</h2>
+            </div>
+            <div>
+                <br>
+                <p class="center">Mass</p>
+                <p class="center">Kilogram</p>
+                <p class="center">Pound</p>
+                <br><br>
+                <button onclick="event.stopPropagation(); redirectTo('p1Mass.html')">Click here to work</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" onclick="redirectTo('lenght.html')">
+        <div class="limage">
+            <div class="lhilight">
+                <h2 class="center">Length Quantity</h2>
+            </div>
+            <br>
+            <p class="center">Length</p>
+            <p class="center">Meters</p>
+            <p class="center">Feet</p>
+            <br><br>
+            <button onclick="event.stopPropagation(); redirectTo('lenght.html')">Click here to work</button>
+        </div>
+    </div>
+
+    <div class="container" onclick="redirectTo('p1time.html')">
+        <div class="timeimage">
+            <div class="thilight">
+                <h2 class="center">Time Converter</h2>
+            </div>
+            <br>
+            <p class="center">Date</p>
+            <p class="center">Year</p>
+            <p class="center">Time</p>
+            <p class="center">Seconds</p>
+            <p class="center">Minutes</p>
+        
+            <button onclick="event.stopPropagation(); redirectTo('p1time.html')">Click here to work</button>
+        </div>
+    </div>
+
+    <div class="container" onclick="redirectTo('currency.html')">
+        <div class="cimage">
+            <div class="chiligh">
+                <h2 class="center">Currency Converter</h2>
+            </div>
+            <div>
+                <br>
+                <p class="center">Currency</p>
+                <p class="center">USD</p>
+                <p class="center">EUR</p>
+                <br><br>
+                <button onclick="event.stopPropagation(); redirectTo('currency.html')">Click here to work</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" onclick="redirectTo('byte.html')">
+        <div class="bimage">
+            <div class="bhilight">
+                <h2 class="center">Byte Converter</h2>
+            </div>
+            <div>
+                <br>
+                <p class="center">Data Size</p>
+                <p class="center">Megabytes</p>
+                <p class="center">Gigabytes</p>
+                <br><br>
+                <button onclick="event.stopPropagation(); redirectTo('byte.html')">Click here to work</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
