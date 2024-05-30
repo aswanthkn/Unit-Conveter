@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 50px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        h1 {
+            color: #2be107;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        select, input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #2be107;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #28d905;
+        }
+
+        p#result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .container > div {
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LENGTH CONVERTER</h1>
+        <div>
+            <label for="from">FROM:</label>
+            <select id="from" name="from">
+                <option value="Meter">Meter</option>
+                <option value="Kilometer">Kilometer</option>
+                <option value="Centimeter">Centimeter</option>
+                <option value="Millimeter">Millimeter</option>
+                <option value="Mile">Mile</option>
+                <option value="Yard">Yard</option>
+                <option value="Foot">Foot</option>
+                <option value="Inch">Inch</option>
+            </select>
+        </div>
+        <div>
+            <label for="to">TO:</label>
+            <select id="to" name="to">
+                <option value="Meter">Meter</option>
+                <option value="Kilometer">Kilometer</option>
+                <option value="Centimeter">Centimeter</option>
+                <option value="Millimeter">Millimeter</option>
+                <option value="Mile">Mile</option>
+                <option value="Yard">Yard</option>
+                <option value="Foot">Foot</option>
+                <option value="Inch">Inch</option>
+            </select>
+        </div>
+        <div>
+            <label for="value">Enter the value:</label>
+            <input type="text" id="value" placeholder="Enter the value">
+        </div>
+        <button onclick="calculate()">Calculate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var fromUnit = document.getElementById("from").value;
+            var toUnit = document.getElementById("to").value;
+            var inputValue = parseFloat(document.getElementById("value").value);
+            var result;
+
+            // Conversion factors to meters
+            var toMeters = {
+                'Meter': 1,
+                'Kilometer': 1000,
+                'Centimeter': 0.01,
+                'Millimeter': 0.001,
+                'Mile': 1609.34,
+                'Yard': 0.9144,
+                'Foot': 0.3048,
+                'Inch': 0.0254
+            };
+
+            // Convert input to meters
+            var valueInMeters = inputValue * toMeters[fromUnit];
+
+            // Convert from meters to the desired unit
+            var fromMeters = {
+                'Meter': 1,
+                'Kilometer': 0.001,
+                'Centimeter': 100,
+                'Millimeter': 1000,
+                'Mile': 0.000621371,
+                'Yard': 1.09361,
+                'Foot': 3.28084,
+                'Inch': 39.3701
+            };
+
+            result = valueInMeters * fromMeters[toUnit];
+
+            document.getElementById("result").innerHTML = "Result: " + result.toFixed(2);
+        }
+    </script>
+</body>
+</html>
