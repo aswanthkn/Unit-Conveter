@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 50px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        h1 {
+            color: #2be107;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        select, input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #2be107;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #28d905;
+        }
+
+        p#result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .container > div {
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Changed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MASS QUANTITIES</h1>
+        <div>
+            <label for="from">FROM:</label>
+            <select id="from" name="from">
+                <option value="Killogram">Kilogram</option>
+                <option value="Pound">Pound</option>
+                <option value="Milligram">Milligram</option>
+                <option value="Ton">Ton</option>
+            </select>
+        </div>
+        <div>
+            <label for="to">TO:</label>
+            <select id="to" name="to">
+                <option value="Killogram">Kilogram</option>
+                <option value="Pound">Pound</option>
+                <option value="Milligram">Milligram</option>
+                <option value="Ton">Ton</option>
+            </select>
+        </div>
+        <div>
+            <label for="value">Enter the value:</label>
+            <input type="text" id="value" placeholder="Enter the value">
+        </div>
+        <button onclick="calculate()">Calculate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var fromUnit = document.getElementById("from").value;
+            var toUnit = document.getElementById("to").value;
+            var inputValue = parseFloat(document.getElementById("value").value);
+            var result;
+
+            if (fromUnit === "Killogram" && toUnit === "Pound") {
+                result = inputValue * 2.20462;
+            } else if (fromUnit === "Pound" && toUnit === "Killogram") {
+                result = inputValue / 2.20462;
+            } else if (fromUnit === "Milligram" && toUnit === "Killogram") {
+                result = inputValue / 1000000;
+            } else if (fromUnit === "Killogram" && toUnit === "Milligram") {
+                result = inputValue * 1000000;
+            } else if (fromUnit === "Ton" && toUnit === "Pound") {
+                result = inputValue * 2204.62;
+            } else if (fromUnit === "Pound" && toUnit === "Ton") {
+                result = inputValue / 2204.62;
+            } else if (fromUnit === "Ton" && toUnit === "Killogram") {
+                result = inputValue * 1000;
+            } else if (fromUnit === "Killogram" && toUnit === "Ton") {
+                result = inputValue / 1000;
+            } else if (fromUnit === "Ton" && toUnit === "Milligram") {
+                result = inputValue * 1e9;
+            } else if (fromUnit === "Milligram" && toUnit === "Ton") {
+                result = inputValue / 1e9;
+            } else {
+                result = inputValue;
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result.toFixed(2);
+        }
+    </script>
+</body>
+</html>
