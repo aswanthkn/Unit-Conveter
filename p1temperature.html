@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <style>
+        body {
+            
+            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 50px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2be107;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #ffffff;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .container > div {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        select, input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #2be107;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #28d905;
+        }
+        p#result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TEMPERATURE</h1>
+        <h2>Calculator</h2>
+        <div>
+            <label for="from">FROM:</label>
+            <select id="from" name="from">
+                <option value="celcius">Celsius</option>
+                <option value="farenheat">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+            <input type="number" id="input" placeholder="Enter the value">
+            <button onclick="calculate()">CLICK</button>
+        </div>
+        <div>
+            <label for="to">TO:</label>
+            <select id="to" name="to">
+                <option value="celcius">Celsius</option>
+                <option value="farenheat">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var fromUnit = document.getElementById("from").value;
+            var toUnit = document.getElementById("to").value;
+            var inputValue = parseFloat(document.getElementById("input").value);
+
+            var result;
+
+            if (fromUnit === "celcius") {
+                if (toUnit === "farenheat") {
+                    result = (inputValue * 9/5) + 32;
+                } else if (toUnit === "kelvin") {
+                    result = inputValue + 273.15;
+                } else {
+                    result = inputValue; 
+                }
+            } else if (fromUnit === "farenheat") {
+                if (toUnit === "celcius") {
+                    result = (inputValue - 32) * 5/9;
+                } else if (toUnit === "kelvin") {
+                    result = (inputValue - 32) * 5/9 + 273.15;
+                } else {
+                    result = inputValue; 
+                }
+            } else if (fromUnit === "kelvin") {
+                if (toUnit === "celcius") {
+                    result = inputValue - 273.15;
+                } else if (toUnit === "farenheat") {
+                    result = (inputValue - 273.15) * 9/5 + 32;
+                } else {
+                    result = inputValue;
+                }
+            }
+
+            document.getElementById("result").textContent = "Result: " + result.toFixed(2);
+        }
+    </script>
+</body>
+</html>
