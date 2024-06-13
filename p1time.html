@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Converter</title>
+    <style>
+        body {
+            background-color: #1e10d6f1; /* Light gray background */
+            color: #333; /* Dark text color */
+            font-family: Arial, sans-serif; /* Font style */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            border: 5px solid #009c3b; /* Pakistani green border */
+            padding: 20px;
+            background-color: #fff; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #009c3b; /* Pakistani green for heading */
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Light gray border */
+            background-color: #f2f2f2; /* Light gray background */
+            color: #333; /* Dark text color */
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #009c3b; /* Pakistani green button */
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00783a; /* Darker green button on hover */
+        }
+
+        #result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time Converter</h1>
+        <div class="input-group">
+            <label for="from">From:</label>
+            <select id="from" name="from">
+                <option value="seconds">Seconds</option>
+                <option value="minutes">Minutes</option>
+                <option value="hours">Hours</option>
+                <option value="days">Days</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="to">To:</label>
+            <select id="to" name="to">
+                <option value="seconds">Seconds</option>
+                <option value="minutes">Minutes</option>
+                <option value="hours">Hours</option>
+                <option value="days">Days</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="value">Enter Amount:</label>
+            <input type="number" id="value" placeholder="Enter amount">
+        </div>
+        <button onclick="convertTime()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertTime() {
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const value = parseFloat(document.getElementById('value').value);
+            let result;
+
+            if (isNaN(value)) {
+                result = 'Please enter a valid number';
+            } else {
+                const conversions = {
+                    seconds: {
+                        seconds: value,
+                        minutes: value / 60,
+                        hours: value / 3600,
+                        days: value / 86400
+                    },
+                    minutes: {
+                        seconds: value * 60,
+                        minutes: value,
+                        hours: value / 60,
+                        days: value / 1440
+                    },
+                    hours: {
+                        seconds: value * 3600,
+                        minutes: value * 60,
+                        hours: value,
+                        days: value / 24
+                    },
+                    days: {
+                        seconds: value * 86400,
+                        minutes: value * 1440,
+                        hours: value * 24,
+                        days: value
+                    }
+                };
+
+                result = `${value} ${from} = ${conversions[from][to]} ${to}`;
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
